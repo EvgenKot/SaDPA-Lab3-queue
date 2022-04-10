@@ -75,6 +75,7 @@ void main() {
     q2.tail = q2.head;
     q2.size = 0;
 
+    //Заполнение 1 очереди
     pushBack(&q1, 28);
     pushBack(&q1, 20);
     pushBack(&q1, -5);
@@ -95,15 +96,15 @@ void main() {
     int nmax = 0;
     int pmin = 0;
 
-
-    while (q1.head != NULL){
+    //Поиск номеров нужных элементов и перемещение всех элементов во 2 очередь
+    while (q1.head != NULL){ 
         data = pop(&q1);
         if (data > 0)
         {
            if (data < pmin){  
                 pmin = data;
                 p = 0;
-                printf(" %d new positive min \n ", pmin);
+                printf("   %d new positive min \n ", pmin);
             }
             else if (pmin == 0){
                 pmin = data;
@@ -115,7 +116,7 @@ void main() {
             if (data > nmax){  
                 nmax = data;
                 n = 0;
-                printf(" %d new negative max \n ", nmax);
+                printf("   %d new negative max \n ", nmax);
             }
             else if (nmax == 0){
                 nmax = data;
@@ -134,6 +135,8 @@ void main() {
 
     p--;
     n--;
+
+    //Перемещение всех элементов из 2 очереди обратно в 1 с заменой нужных элемнтов
     while (q2.head != NULL){
         data = pop(&q2);
         if (q2.size == n){
